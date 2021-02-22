@@ -60,10 +60,11 @@ Cada instancia de **Termostato** tiene tres métodos:
  * El método **indicarTemperaturaIdeal** se usa para configurar la temperatura ideal deseada en la habitación.
  * El método **encender** se usa para encender el termostato, inicializando el temporizador interno que lanza los eventos.
  * El método **apagar** se usa para apagar el temporizador, detenido el temporizador interno encargado de lanzar los eventos.
+
 Las instancias de Termostato pueden emitir tres eventos:
-•	El evento **"muchocalor"** se emite cuando la temperatura actual de la habitación supera a la temperatura ideal en más grados que los indicados por la constante **MARGEN_ERROR**.
-•	El evento **"muchofrio"** se emite cuando la temperatura actual de la habitación es inferior a la temperatura ideal en más grados que los indicados por la constante **MARGEN_ERROR**.
-•	El evento **"tic"** se emite cada medio segundo, y le pasa a los escuchadores como parámetro el valor de la temperatura actual de la habitación.
+ * El evento **"muchocalor"** se emite cuando la temperatura actual de la habitación supera a la temperatura ideal en más grados que los indicados por la constante **MARGEN_ERROR**.
+ * El evento **"muchofrio"** se emite cuando la temperatura actual de la habitación es inferior a la temperatura ideal en más grados que los indicados por la constante **MARGEN_ERROR**.
+ * El evento **"tic"** se emite cada medio segundo, y le pasa a los escuchadores como parámetro el valor de la temperatura actual de la habitación.
 
 ### El fichero ***main.js***
 
