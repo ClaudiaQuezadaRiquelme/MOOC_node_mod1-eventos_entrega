@@ -1,10 +1,10 @@
 {
   "name": "MOOC_node_mod1-eventos_entrega",
-  "author": "ging-moocs",
+  "author": "ging-moocs + Claudia Quezada",
   "license": "GNU",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "info": {
-    "githubURL": "ging-moocs/MOOC_node_mod1-eventos_entrega",
+    "githubURL": "ClaudiaQuezadaRiquelme/MOOC_node_mod1-eventos_entrega",
     "serverUrl": "https://autocorector.dit.upm.es/",
     "courseId": "2",
     "assignmentId": "17"
