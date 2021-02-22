@@ -13,8 +13,8 @@ const climatizador = new Climatizador(dormitorio);
 // Creamos un Termostato que mira la temperatura de la habitacion:
 const termostato = new Termostato(dormitorio);
 
-// Creamos un Programador para cambiar la temperatura ideal según horario:
-const programador = new Programador([
+// Definimos la programación
+const programacion = [
     { hora: "07:00",
       temperatura: 22
     },
@@ -27,7 +27,13 @@ const programador = new Programador([
     { hora: "23:00",
       temperatura: 20
     }
-  ]);
+]
+
+// Creamos un Programador para cambiar la temperatura ideal según horario:
+const programador = new Programador(programacion);
+
+// Inicializar Programador
+programador.iniciarProgramador();
 
 // Configuramos el termostato para controlar la temperatura:
 termostato.on('muchofrio', () => climatizador.calentar());
@@ -41,3 +47,6 @@ termostato.indicarTemperaturaIdeal(20);
 
 // Encender el termostato:
 termostato.encender();
+
+// Cambiar la temperatura ideal según indicaciones dentro de programador
+programador.on('ideal', (temp) => termostato.indicarTemperaturaIdeal(temp));
