@@ -1,5 +1,4 @@
 const { EventEmitter } = require("./termostato");
-
 const later = require('later');
 
 class Programador extends EventEmitter {
