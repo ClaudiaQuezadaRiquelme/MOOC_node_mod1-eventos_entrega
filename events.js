@@ -1,5 +1,13 @@
 // https://www.freecodecamp.org/news/how-to-code-your-own-event-emitter-in-node-js-a-step-by-step-guide-e13b7e7908e1/
 
+// Clase EventEmitter.
+// Guarda claves de eventos con sus respectivos arreglos de funciones
+// permite suscribirse a eventos, eliminar eventos, suscribirse a un evento por una sola vez y emitir eventos
+// Metodos:
+//    on
+//    off
+//    once
+//    emit
 class EventEmitter {
   
   constructor() {
@@ -8,20 +16,17 @@ class EventEmitter {
   }
   
 
-  // The addListener event checks if the event is already registered. 
+  // The on event checks if the event is already registered. 
   // If yes, returns the array, otherwise empty array
-  addListener(eventName, callback) {
+  on(eventName, callback) {
     this.listeners[eventName] = this.listeners[eventName] || [];
     this.listeners[eventName].push(callback);
     return this;
   }
 
-  // On methon is just an alias to the ‘addListener’ method
-  on(eventName, callback) { return this.addListener(eventName, callback); }
-
-  // The removeListener method takes an eventName and the callback as the parameters. 
+  // The off method takes an eventName and the callback as the parameters. 
   // It removes said listener from the event array.
-  removeListener(eventName, callback) {
+  off(eventName, callback) {
     let arrCallb = this.listeners[eventName];
 
     if (!arrCallb) return this;
@@ -34,9 +39,6 @@ class EventEmitter {
     }
     return this;
   }
-
-  // Off methon is just an alias to the ‘removeListener’ method
-  off(eventName, callback) { return this.removeListener(eventName, callback); }
 
   // If the event occurs, their callback is executed and removed from the event array
   once(eventName, callback) {
@@ -54,7 +56,7 @@ class EventEmitter {
     let arrCallb = this.listeners[eventName];
     
     if (!arrCallb) return false;
-
+    
     // For all function listeners, invoke the function with the arguments
     arrCallb.forEach( callback => { callback(...args); });
     return true;

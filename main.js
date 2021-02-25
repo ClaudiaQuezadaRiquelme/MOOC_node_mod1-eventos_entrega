@@ -1,6 +1,6 @@
 const Habitacion = require('./habitacion');
 const Climatizador = require('./climatizador');
-const { Termostato } = require('./termostato');
+const Termostato = require('./termostato');
 const Programador = require('./programador');
 
 // Creamos una habitacion:
@@ -32,9 +32,6 @@ const programacion = [
 // Creamos un Programador para cambiar la temperatura ideal según horario:
 const programador = new Programador(programacion);
 
-// Inicializar Programador
-programador.iniciarProgramador();
-
 // Configuramos el termostato para controlar la temperatura:
 termostato.on('muchofrio', () => climatizador.calentar());
 termostato.on('muchocalor', () => climatizador.enfriar());
@@ -42,11 +39,14 @@ termostato.on('muchocalor', () => climatizador.enfriar());
 // Mostrar la temperatura periodicamente:
 termostato.on('tic', (temp) => console.log(`${temp.toFixed(1)}ºC`));
 
-// Configurar la temp ideal a 20 grados:
-termostato.indicarTemperaturaIdeal(20);
-
-// Encender el termostato:
-termostato.encender();
+// Configurar la temp ideal a los grados que corresponde según hora actual:
+termostato.indicarTemperaturaIdeal(programador.setTemperaturaIdeal());
 
 // Cambiar la temperatura ideal según indicaciones dentro de programador
 programador.on('ideal', (temp) => termostato.indicarTemperaturaIdeal(temp));
+
+// Inicializar Programador
+programador.iniciarProgramador();
+
+// Encender el termostato:
+termostato.encender();

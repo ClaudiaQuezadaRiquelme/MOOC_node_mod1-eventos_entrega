@@ -56,7 +56,4 @@ class Termostato  extends EventEmitter {
 	}
 }
 
-exports = module.exports = {
-	Termostato,
-	EventEmitter
-}
+exports = module.exports = Termostato;
