@@ -1,5 +1,6 @@
+const EventEmitter = require('./events');
 
-const EventEmitter = require('events');
+// const EventEmitter = require('events');
 
 
 // Diferencia de temperatura permitida entre la temperatura real y la ideal.
@@ -32,6 +33,7 @@ class Termostato  extends EventEmitter {
 	}
 
 	indicarTemperaturaIdeal(temperaturaIdeal) {
+		console.log(`Nueva temperatura ideal: ${temperaturaIdeal}`);
 		this.temperaturaIdeal = temperaturaIdeal;
 	}
 
